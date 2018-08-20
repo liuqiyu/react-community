@@ -1,0 +1,35 @@
+{
+  "name": "react-community",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^3.8.2",
+    "axios": "^0.18.0",
+    "babel-plugin-import": "^1.8.0",
+    "react": "^16.4.2",
+    "react-app-rewired": "^1.5.2",
+    "react-dom": "^16.4.2",
+    "react-loadable": "^5.5.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom"
+  },
+  "devDependencies": {
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "react-app-rewire-less": "^2.1.2"
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3333/",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": "/"
+      }
+    }
+  }
+}
