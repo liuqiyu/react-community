@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch  } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Loadable from 'react-loadable';
 import Topbar from './../components/topbar/topbar';
 import './App.less';
+import { login } from './../store/loginStatus/action'
 
 const loadingComponent = ({ isLoading, error }) => {
     // Handle the loading state
@@ -46,4 +48,8 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(state => ({
+    loginStatus: state.loginStatus.loginStatus,
+}), {
+    login,
+})(App);

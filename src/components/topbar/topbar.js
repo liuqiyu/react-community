@@ -3,6 +3,7 @@ import { Button, Icon } from 'antd';
 import Mmodal  from './../modal/modal';
 import RegisterModal  from './../register/register';
 import LoginModal  from './../login/login';
+import user from './../../api/user';
 import './topbar.less';
 
 class Topbar extends Component {
@@ -27,6 +28,12 @@ class Topbar extends Component {
         this.refs.Mmodal.modalControl();
     };
 
+    logout = () => {
+        user.logout().then((res) => {
+            console.log(res);
+        });
+    };
+
     submit = () => {
         this.refs.Mmodal.modalControl();
     };
@@ -45,6 +52,7 @@ class Topbar extends Component {
                     <div className="right-bar">
                         <Button type="primary" onClick={this.register}>注册</Button>
                         <Button type="primary" icon="user" onClick={this.login}>登录</Button>
+                        <Button type="primary" icon="user" onClick={this.logout}>注销</Button>
                     </div>
                 </div>
                 <Mmodal ref="Mmodal">
