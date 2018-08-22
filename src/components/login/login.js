@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Button, Input, message } from "antd";
 import user from '../../api/user';
+import {login} from "../../store/loginStatus/action";
+import {connect} from "react-redux";
 const FormItem = Form.Item;
 
 class Login extends Component {
@@ -26,6 +28,7 @@ class Login extends Component {
             loading: false,
         };
     }
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -40,6 +43,8 @@ class Login extends Component {
                 user.login(form).then((res) => {
                     if (res.data.code === 200) {
                         message.info(res.data.message);
+                        window.localStorage.setItem('userInfo', JSON.stringify(res.data.data));
+                        this.props.login(res.data.data);
                     } else {
                         message.error(res.data.message);
                     }
@@ -85,4 +90,8 @@ class Login extends Component {
 
 const LoginWrap = Form.create()(Login);
 
-export default LoginWrap;
+export default connect(state => ({
+    loginStatus: state,
+}), {
+    login,
+})(LoginWrap);

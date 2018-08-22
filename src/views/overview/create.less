@@ -1,0 +1,39 @@
+.create_modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  background: #e9e9e9;
+  transition: height 0.4s ease;
+  z-index: 999;
+  .body {
+    height: 100%;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    .article {
+      padding-top: 10px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      .header {
+        flex: none;
+        margin-bottom: 10px;
+      }
+      .centent {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        .areatxt {
+          flex: 1;
+          background: #fff;
+        }
+        footer {
+          padding-top: 10px;
+          flex: none;
+        }
+      }
+    }
+  }
+}

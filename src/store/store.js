@@ -7,8 +7,10 @@ import { createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import loginStatusReducer from './loginStatus/reducer';
 
+// const rootReducer = combineReducers(loginStatusReducer);
+
 let store = createStore(
-    combineReducers({...loginStatusReducer}),
+    loginStatusReducer,
     composeWithDevTools());
 
 export default store;

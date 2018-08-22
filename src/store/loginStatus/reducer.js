@@ -2,25 +2,37 @@ import * as loginStatus from './action-types';
 
 const initialState = {
     loginStatus: false,
-    userInfo: null,
+    userInfo: {},
 };
 
 const mainLogin = (state = initialState, action ) => {
     switch (action.type) {
         case loginStatus.LOGIN: {
+            // 登录
             return {
                 ...state,
-                gunfire: action.payload,
+                loginStatus: true,
+                userInfo: action.payload,
             };
         }
         case loginStatus.LOGOUT: {
+            // 注销
             return {
                 ...state,
-                gunfire: action.payload,
+                loginStatus: false,
+            };
+        }
+        case loginStatus.GET_LOGIN_STATUS: {
+            // 判断登录状态
+            const userInfo = JSON.parse(window.localStorage.getItem('userInfo'));
+            return {
+                ...state,
+                loginStatus: userInfo ? true : false,
+                userInfo: userInfo ? userInfo : {},
             };
         }
         default:
-            break;
+            return state;
     }
 };
 

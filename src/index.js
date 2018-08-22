@@ -6,14 +6,7 @@ import store from './store/store';
 import registerServiceWorker from './registerServiceWorker';
 import './assets/style/reset.css';
 import './assets/style/less/base.less';
-
-// 使用Provider类将React应用程序包装在Redux容器中
-ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('root')
-);
+console.log(store);
 
 const render = Component => {
     ReactDOM.render(
