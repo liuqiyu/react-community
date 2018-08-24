@@ -14,6 +14,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+    "react-umeditor": "^1.0.1",
     "redux": "^4.0.0"
   },
   "scripts": {

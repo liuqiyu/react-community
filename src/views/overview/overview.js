@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Select, Button, Table, Divider, Tag } from 'antd';
+import { connect } from 'react-redux';
 import Create from './create';
+import { hasClass } from './../../common/utils';
 import overview from './../../api/overview'
 import './overview.less';
 
@@ -78,10 +80,20 @@ class Overview extends Component {
         });
     };
 
+    sendArticle = () => {
+        const createModal = document.querySelector('.create_modal');
+        if (!hasClass(createModal, '_height_400')) {
+            createModal.classList.add('_height_400');
+        }
+    };
+
     render() {
-        const classOptions = this.state.classOptions.map((value, index) => {
+        let createButton = '';
+        const classOptions = this.state.classOptions.map((value) => {
             return <Option key={value.id}>{value.name}</Option>;
         });
+        // 未登录 - 发表文章隐藏  登录 - 显示
+        this.props.loginStatus ?  createButton =  <Button type="dashed" icon="plus" onClick={this.sendArticle}>发表文章</Button> : createButton = '';
         return (
             <div className="overvierw">
                 <header className="flex-row o-header">
@@ -94,7 +106,7 @@ class Overview extends Component {
                     >
                         { classOptions }
                     </Select>
-                    <Button type="dashed" icon="plus">发表文章</Button>
+                    { createButton }
                 </header>
                 <section className="o-section">
                     <Table columns={columns} dataSource={this.state.tableData} />
@@ -105,4 +117,7 @@ class Overview extends Component {
     }
 }
 
-export default Overview;
+export default connect(state => ({
+    loginStatus: state.loginStatus,
+    userInfo: state.userInfo,
+}))(Overview);

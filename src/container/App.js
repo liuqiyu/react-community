@@ -49,7 +49,8 @@ class App extends Component {
 }
 
 export default connect(state => ({
-    loginStatus: state,
+    loginStatus: state.loginStatus,
+    userInfo: state.userInfo,
 }), {
     login,
 })(App);

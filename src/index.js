@@ -6,7 +6,6 @@ import store from './store/store';
 import registerServiceWorker from './registerServiceWorker';
 import './assets/style/reset.css';
 import './assets/style/less/base.less';
-console.log(store);
 
 const render = Component => {
     ReactDOM.render(

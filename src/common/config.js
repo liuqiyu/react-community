@@ -16,9 +16,9 @@ if (process.env.NODE_ENV === 'development') {
 
 
 const getSession = () => {
-  const userinfo = JSON.parse(window.sessionStorage.getItem('userinfo'));
+  const userInfo = JSON.parse(window.localStorage.getItem('userInfo'));
   let session_id;
-  userinfo ? session_id = userinfo.session_id : session_id = null;
+  userInfo ? session_id = userInfo.sessionID : session_id = null;
   return session_id;
 };
 
