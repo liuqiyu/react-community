@@ -21,6 +21,10 @@ const columns = [{
     dataIndex: 'tag_name',
     key: 'tag_name',
 }, {
+    title: '创建人',
+    dataIndex: 'username',
+    key: 'username',
+}, {
     title: '创建日期',
     dataIndex: 'create_date',
     key: 'create_date',
